@@ -21,11 +21,6 @@ class DumpServer extends Command
 {
     private const OPTION_HOST = '--host';
 
-    public function __construct(string $name = null)
-    {
-        parent::__construct($name);
-    }
-
     protected function configure(): void
     {
         $this->setName('server:dump')
