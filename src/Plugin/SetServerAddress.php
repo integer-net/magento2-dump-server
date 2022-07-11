@@ -15,7 +15,8 @@ use function sprintf;
 
 class SetServerAddress
 {
-    public const DEFAULT_ADDRESS = '127.0.0.1:9912';
+    public const  DEFAULT_ADDRESS        = '127.0.0.1:9912';
+    private const DEV_DUMP_SERVER_CONFIG = 'dev_dump_server';
 
     private State $state;
     private DeploymentConfig $deploymentConfig;
@@ -62,7 +63,7 @@ class SetServerAddress
     private function getDumpServerConfig(): array
     {
         /** @var null|string|array{enabled?: bool, address?: string} $value */
-        $value = $this->deploymentConfig->get('dump_server');
+        $value = $this->deploymentConfig->get(self::DEV_DUMP_SERVER_CONFIG);
 
         if (is_array($value)) {
             return [
