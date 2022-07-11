@@ -2,6 +2,8 @@
 
 This module adds  a new command to start a dump-server for use with the symfony var-dumper component to magento 2.
 
+This only works for Http requests to magento. (no cli commands, cronjobs, etc)
+
 ## Starting the dump server
 
 The dump server can be started using the command `bin/magento server:dump`.
