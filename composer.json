@@ -1,18 +1,15 @@
 {
     "name": "integer-net/magento2-dump-server",
-    "version": "1.0.0",
     "description": "N/A",
     "type": "magento2-module",
-    "license": [
-        "Proprietary"
-    ],
+    "license":"Proprietary",
     "require": {
         "php": ">=7.4",
-        "magento/framework": "*",
-        "symfony/var-dumper": "^4.2|^5.0|^6.0"
+        "magento/framework": "*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
+        "symfony/var-dumper": "^4.2|^5.0|^6.0",
         "phpstan/phpstan": "^1.7",
         "phpstan/extension-installer": "^1.1",
         "bitexpert/phpstan-magento": ">=0.23.0",
