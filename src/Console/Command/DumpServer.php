@@ -16,6 +16,7 @@ use Symfony\Component\VarDumper\Cloner\Data;
 use Symfony\Component\VarDumper\Command\Descriptor\CliDescriptor;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\Server\DumpServer as SymfonyDumpServer;
+use Webmozart\Assert\Assert;
 
 class DumpServer extends Command
 {
@@ -41,11 +42,8 @@ class DumpServer extends Command
             ? $output->getErrorOutput()
             : $output;
 
-        $host = (string)$input->getParameterOption(
-            self::OPTION_HOST,
-            SetServerAddress::DEFAULT_ADDRESS,
-            true
-        );
+        $host = $input->getParameterOption(self::OPTION_HOST, SetServerAddress::DEFAULT_ADDRESS, true);
+        Assert::string($host);
 
         $logger = new ConsoleLogger($errorOutput);
         $server = new SymfonyDumpServer($host, $logger);
@@ -64,6 +62,6 @@ class DumpServer extends Command
             $descriptor->describe($io, $data, $context, $clientId);
         });
 
-        return 0;
+        return self::SUCCESS;
     }
 }

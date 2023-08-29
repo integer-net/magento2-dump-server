@@ -15,16 +15,14 @@ use function sprintf;
 
 class SetServerAddress
 {
-    public const  DEFAULT_ADDRESS        = '127.0.0.1:9912';
+    final public const  DEFAULT_ADDRESS  = '127.0.0.1:9912';
+
     private const DEV_DUMP_SERVER_CONFIG = 'dev_dump_server';
 
-    private State $state;
-    private DeploymentConfig $deploymentConfig;
-
-    public function __construct(State $state, DeploymentConfig $deploymentConfig)
-    {
-        $this->state            = $state;
-        $this->deploymentConfig = $deploymentConfig;
+    public function __construct(
+        private readonly State $state,
+        private readonly DeploymentConfig $deploymentConfig
+    ) {
     }
 
     /**@throws FileSystemException
@@ -39,7 +37,7 @@ class SetServerAddress
         }
 
         $config = $this->getDumpServerConfig();
-        if ($config['enabled'] === false) {
+        if (!$config['enabled']) {
             return;
         }
 

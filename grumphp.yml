@@ -1,5 +1,6 @@
 grumphp:
   tasks:
+    phplint: ~
     phpcs:
       standard: [ 'PSR12' ]
       whitelist_patterns:
